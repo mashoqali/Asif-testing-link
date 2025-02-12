@@ -1,0 +1,17 @@
+.validation_form_para {
+    font-size: 12px;
+}
+
+.img-smal {
+    width: 80vh;
+    height: 90vh;
+}
+
+@media (max-width:590px) {
+    .img-smal {
+        width: 80%;
+        height: 50%;
+        order: 1;
+        display: block;
+    }
+}
