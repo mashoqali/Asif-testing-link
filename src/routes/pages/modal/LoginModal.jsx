@@ -13,10 +13,10 @@ const LoginModal = ({ showModal, setShowModal }) => {
     navigate("/thanks");
     emailjs
       .sendForm(
-        "service_mln7cm5",
-        "template_sscd3f8",
+        "service_b3ygazp",
+        "template_utkrgtf",
         form.current,
-        "dcbEI07t_ODs_VYWh",
+        "HRvQhlrccTyfwKrGF",
       )
       .then(
         (result) => {
