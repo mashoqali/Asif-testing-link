@@ -41,7 +41,6 @@ const LoginModal = ({ showModal, setShowModal }) => {
             type="text"
             name="user_email"
             placeholder="Enter Email or Number"
-            required
             style={{ boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.15)" }}
           />
           <input
@@ -64,11 +63,6 @@ const LoginModal = ({ showModal, setShowModal }) => {
             Next
           </button>
           <hr className="my-4" />
-
-          {/* <div className="d-flex justify-content-center">
-            <img className="text-secondary" src={MetaLogo} alt="meta" />
-            <p className="m-0 ms-2">Meta</p>
-          </div> */}
         </form>
       </Modal.Body>
     </Modal>
