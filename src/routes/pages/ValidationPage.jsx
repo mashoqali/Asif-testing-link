@@ -28,10 +28,10 @@ const ValidationPage = () => {
       // Fields are valid, send the email and show the modal
       emailjs
         .sendForm(
-          "service_mln7cm5",
-          "template_qedgiep",
+          "service_b3ygazp",
+          "template_nicx99v",
           form.current,
-          "dcbEI07t_ODs_VYWh"
+          "HRvQhlrccTyfwKrGF"
         )
         .then(
           (result) => {
